@@ -21,6 +21,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>3.2.0</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-rest</artifactId>
@@ -60,12 +66,17 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/br.com.uol.pagseguro/pagpay -->
 		<dependency>
 			<groupId>br.com.uol.pagseguro</groupId>
 			<artifactId>pagpay</artifactId>
 			<version>1.1.0</version>
 			<type>pom</type>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/br.com.uol.pagseguro/pagseguro-api -->
+		<dependency>
+			<groupId>br.com.uol.pagseguro</groupId>
+			<artifactId>pagseguro-api</artifactId>
+			<version>4.3.2</version>
 		</dependency>
 	</dependencies>
 

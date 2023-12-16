@@ -5,7 +5,7 @@ public enum TypesPayment {
     CREDIT("Credito"),
     PIX("pix");
 
-    private final String  typePayment;
+    private final String typePayment;
 
     private TypesPayment(String typePayment) {
         this.typePayment = typePayment;
