@@ -9,9 +9,9 @@ import br.com.uol.pagseguro.api.common.domain.builder.InstallmentBuilder;
 @Component
 public class InstatementComponent {
 
-	public InstallmentBuilder toInstallmentBuilder(InstallmentDTO prestacao) {
+	public InstallmentBuilder toInstallmentBuilder(InstallmentDTO installment) {
 		return new InstallmentBuilder()
-				.withQuantity(prestacao.getQuantidade())
-				.withValue(prestacao.getValor());
+				.withQuantity(installment.getQuantity())
+				.withValue(installment.getValue());
 	}
 }

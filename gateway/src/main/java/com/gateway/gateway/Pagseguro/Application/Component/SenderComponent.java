@@ -11,15 +11,15 @@ import br.com.uol.pagseguro.api.common.domain.builder.SenderBuilder;
 public class SenderComponent {
 
 	@Autowired
-	private PhoneComponent telefoneComponent;
+	private PhoneComponent phoneComponent;
 	
-	public SenderBuilder toSenderBuilder(SenderDTO remetente) {
+	public SenderBuilder toSenderBuilder(SenderDTO sender) {
 		return new  SenderBuilder()
-				.withEmail(remetente.getEmail())
-				.withName(remetente.getNome())
-				.withCPF(remetente.getCpf())
+				.withEmail(sender.getEmail())
+				.withName(sender.getName())
+				.withCPF(sender.getCpf())
 				.withHash("abc123")
 				.withPhone(
-						telefoneComponent.toPhoneBuilder(remetente.getTelefone()));
+						phoneComponent.toPhoneBuilder(sender.getPhone()));
 	}
 }

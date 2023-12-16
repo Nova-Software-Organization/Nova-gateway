@@ -9,29 +9,29 @@ import br.com.uol.pagseguro.api.preapproval.PreApprovalRegistrationBuilder;
 
 @Component
 public class PreAprovadComponent {
-	private SenderComponent remetenteComponent;
-	private ShippingComponent remessaComponent;
-	private RequestPreAprovadComponent requisicaoPreAprovadoComponent;
+	private SenderComponent senderComponent;
+	private ShippingComponent shippingComponent;
+	private RequestPreAprovadComponent requestPreAprovadComponent;
     
 	@Autowired
-    public PreAprovadComponent(SenderComponent remetenteComponent, ShippingComponent remessaComponent, RequestPreAprovadComponent requisicaoPreAprovadoComponent) {
-        this.remetenteComponent = remetenteComponent;
-        this.remessaComponent = remessaComponent;
-        this.requisicaoPreAprovadoComponent = requisicaoPreAprovadoComponent;
-    }
-	
-	 public PreApprovalRegistrationBuilder toPreApprovalRegistrationBuilder(PreAprovadDTO preAprovado) {
+	public PreAprovadComponent(SenderComponent senderComponent, ShippingComponent shippingComponent, RequestPreAprovadComponent requestPreAprovadComponent) {
+		this.senderComponent = senderComponent;
+		this.shippingComponent = shippingComponent;
+		this.requestPreAprovadComponent = requestPreAprovadComponent;
+	}
+		
+	 public PreApprovalRegistrationBuilder toPreApprovalRegistrationBuilder(PreAprovadDTO preAprovad) {
 		 return new PreApprovalRegistrationBuilder()
-	              .withCurrency(preAprovado.getMoeda())
-	              .withExtraAmount(preAprovado.getPrecoExtra())
-	              .withReference(preAprovado.getReferencia())
+	              .withCurrency(preAprovad.getCoin())
+	              .withExtraAmount(preAprovad.getExtraPrice())
+	              .withReference(preAprovad.getReference())
 	              .withSender(
-	            		  remetenteComponent.toSenderBuilder(preAprovado.getRemetente()))
+	            		  senderComponent.toSenderBuilder(preAprovad.getSender()))
 	              .withShipping(
-	            		  remessaComponent.toShippingBuilder(preAprovado.getRemessa()))
+	            		  shippingComponent.toShippingBuilder(preAprovad.getShipping()))
 	              .withPreApproval(
-	            		  requisicaoPreAprovadoComponent.toPreApprovalRequestBuilder(preAprovado.getRequisicao()))
-	              .withRedirectURL(preAprovado.getRedirecionaURL())
-	              .withNotificationURL(preAprovado.getNotificacaoRL());
+	            		  requestPreAprovadComponent.toPreApprovalRequestBuilder(preAprovad.getRequestPreAprovad()))
+	              .withRedirectURL(preAprovad.getRedirectUrl())
+	              .withNotificationURL(preAprovad.getNotificationRL());
 	 }
 }

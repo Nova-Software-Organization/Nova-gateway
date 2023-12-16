@@ -9,24 +9,24 @@ import br.com.uol.pagseguro.api.common.domain.builder.CreditCardBuilder;
 
 @Component
 public class CardCreditComponent {
-	private AddressComponent enderecoComponent;
-	private HolderComponent titularComponent;
-	private InstatementComponent prestacaoComponent;
+	private AddressComponent addressComponent;
+	private HolderComponent holderComponent;
+	private InstatementComponent instatementComponent;
 
-    @Autowired
-    public CardCreditComponent(AddressComponent enderecoComponent, HolderComponent titularComponent, InstatementComponent prestacaoComponent) {
-        this.enderecoComponent = enderecoComponent;
-        this.titularComponent = titularComponent;
-        this.prestacaoComponent = prestacaoComponent;
-    }
-
-	public CreditCardBuilder toCreditCardBuilder(CardCreditDTO cartaoCredito) {
-		return new CshBillingAddress(
-						enderecoComponent.toAddressBuilder(cartaoCredito.getEnderecoCobranca()))
-				.withInstallment(
-						prestacaoComponent.toInstallmentBuilder(cartaoCredito.getPrestacao()))
-				.withHolder(
-						titularComponent.toHolderBuilder(cartaoCredito.getTitular()))
-				.withToken("token");
+	@Autowired
+	public CardCreditComponent(AddressComponent addressComponent, HolderComponent holderComponent, InstatementComponent instatementComponent) {
+		this.addressComponent = addressComponent;
+		this.holderComponent = holderComponent;
+		this.instatementComponent = instatementComponent;
 	}
+
+	public CreditCardBuilder toCreditCardBuilder(CardCreditDTO cardCredit) {
+        CreditCardBuilder creditCardBuilder = new CreditCardBuilder()
+                .withBillingAddress(addressComponent.toAddressBuilder(cardCredit.getAddressCharge()))
+                .withInstallment(instatementComponent.toInstallmentBuilder(cardCredit.getInstallment()))
+                .withHolder(holderComponent.toHolderBuilder(cardCredit.getHolder()))
+                .withToken("token");
+
+        return creditCardBuilder;
+    }
 }

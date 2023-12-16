@@ -13,11 +13,11 @@ public class ShippingComponent {
 	@Autowired
 	private AddressComponent enderecoComponent;
 	
-	public ShippingBuilder toShippingBuilder(ShippingDTO remessa) {
+	public ShippingBuilder toShippingBuilder(ShippingDTO shipping) {
 		return new ShippingBuilder()
-				.withType(remessa.getTipo())
-				.withCost(remessa.getCusto())
+				.withType(shipping.getType())
+				.withCost(shipping.getCost())
 				.withAddress(
-						enderecoComponent.toAddressBuilder(remessa.getEndereco()));
+						enderecoComponent.toAddressBuilder(shipping.getAddress()));
 	}
 }

@@ -9,9 +9,9 @@ import br.com.uol.pagseguro.api.common.domain.builder.DocumentBuilder;
 @Component
 public class DocumentHolderComponent {
 
-	public DocumentBuilder toDocumentBuilder(DocumentHolderDTO documento) {
+	public DocumentBuilder toDocumentBuilder(DocumentHolderDTO document) {
 		return new DocumentBuilder()
-				.withType(documento.getTipo())
-				.withValue(documento.getValor());
+				.withType(document.getType())
+				.withValue(document.getValue());
 	}
 }

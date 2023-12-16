@@ -11,7 +11,7 @@ public class PhoneComponent {
 	
 	public PhoneBuilder toPhoneBuilder(PhoneDTO telefone) {
 		return new PhoneBuilder()
-				.withAreaCode(telefone.getCodigoArea())
-				.withNumber(telefone.getNumero());
+				.withAreaCode(telefone.getCodeArea())
+				.withNumber(telefone.getNumber());
 	}
 }

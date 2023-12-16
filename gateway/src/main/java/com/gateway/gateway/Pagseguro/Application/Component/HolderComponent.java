@@ -14,29 +14,31 @@ import br.com.uol.pagseguro.api.common.domain.builder.HolderBuilder;
 
 @Component
 public class HolderComponent {
-	
-	@Autowired
-	private PhoneComponent telefoneComponent;
-	
-	@Autowired
+	private PhoneComponent telefoneComponent;	
 	private DocumentHolderComponent documentoTitularComponent;
+	
+	@Autowired
+	public HolderComponent(PhoneComponent telefoneComponent, DocumentHolderComponent documentoTitularComponent) {
+		this.telefoneComponent = telefoneComponent;
+		this.documentoTitularComponent = documentoTitularComponent;
+	}
 
-	public HolderBuilder toHolderBuilder(HolderDTO titular) {
+	public HolderBuilder toHolderBuilder(HolderDTO holderDTO) {
 		 
 		HolderBuilder holder;
 		holder = new HolderBuilder()
-				.withName(titular.getNome())
+				.withName(holderDTO.getName())
 				.withPhone(
-						telefoneComponent.toPhoneBuilder(titular.getTelefone()));
+						telefoneComponent.toPhoneBuilder(holderDTO.getPhone()));
 		try {
-			holder.withBithDate(new SimpleDateFormat("dd/MM/yyyy").parse(titular.getDataAniversario().toString()));
+			holder.withBithDate(new SimpleDateFormat("dd/MM/yyyy").parse(holderDTO.getDateBirthday().toString()));
 		} catch (ParseException e) {
 
 			e.printStackTrace();
 		}
          
-		List<DocumentHolderDTO> documentos = titular.getDocumentos();
-		documentos.forEach(d -> {
+		List<DocumentHolderDTO> documents = holderDTO.getDocument();
+		documents.forEach(d -> {
 			holder.addDocument(
 					documentoTitularComponent.toDocumentBuilder(d));
 		});
