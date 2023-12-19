@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot Application Nova Gateway",
+            "request": "launch",
+            "mainClass": "com.api.gateway.GatewayApplication",
+            "args": [
+                "--spring.profiles.active=dev"
+            ]
+        }
+    ]
+}

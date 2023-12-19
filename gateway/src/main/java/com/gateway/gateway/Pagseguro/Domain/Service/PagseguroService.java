@@ -1,4 +1,4 @@
-package com.gateway.gateway.Pagseguro.Domain.Service;
+package com.gateway.gateway.Pagseguro.Domain.service;
 
 import org.springframework.stereotype.Service;
 

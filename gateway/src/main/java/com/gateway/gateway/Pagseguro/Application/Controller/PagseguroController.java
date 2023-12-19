@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gateway.gateway.Pagseguro.Application.Dtos.PagseguroDTO;
-import com.gateway.gateway.Pagseguro.Domain.Service.PagseguroService;
+import com.gateway.gateway.Pagseguro.Domain.service.PagseguroService;
 
 @RestController
 @RequestMapping("/gateway/pagseguro")
