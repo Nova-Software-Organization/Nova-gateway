@@ -35,5 +35,4 @@ public class CheckoutTransparentService {
                             cardCreditComponent.toCreditCardBuilder(payment.getCardCredit()));
             return ResponseEntity.status(HttpStatus.CREATED).body(creditCardTransaction);
     }
-
 }
